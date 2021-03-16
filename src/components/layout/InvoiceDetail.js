@@ -1,0 +1,98 @@
+import { useContext } from "react";
+import PropTypes from "prop-types";
+import PriceDetail from "./PriceDetail";
+import { ThemeContext } from "../../context/ThemeContext";
+
+const InvoiceDetail = ({ invoice }) => {
+  const {
+    id,
+    createdAt,
+    paymentDue,
+    description,
+    clientName,
+    clientEmail,
+    senderAddress,
+    clientAddress,
+    items,
+  } = invoice;
+
+  const { darkTheme } = useContext(ThemeContext);
+  return (
+    <div className={`invoice-detail ${darkTheme ? "dark-details" : ""} `}>
+      <div className="invoice-detail__header">
+        <div className="invoice-detail__header-info">
+          <p className="">{id}</p>
+          <p className="invoice-detail__text">{description}</p>
+        </div>
+        <div className="invoice-detail__address">
+          <p className="invoice-detail__text">{senderAddress.street}</p>
+          <p className="invoice-detail__text ">{senderAddress.city}</p>
+          <p className="invoice-detail__text ">{senderAddress.postCode}</p>
+          <p className="invoice-detail__text ">{senderAddress.country}</p>
+        </div>
+      </div>
+
+      <div className="invoice-detail__body">
+        <div className="invoice-detail__body-dates">
+          <div className="invoice-detail__body-invoice-date">
+            <p className="invoice-detail__text invoice-detail__title ">
+              invoice date
+            </p>
+            <p>{createdAt}</p>
+          </div>
+
+          <div className="invoice-detail__body-due-date">
+            <p className="invoice-detail__text invoice-detail__title ">
+              payment due
+            </p>
+            <p>{paymentDue}</p>
+          </div>
+        </div>
+
+        <div className="invoice-detail__body-client">
+          <p className="invoice-detail__text invoice-detail__title ">bill to</p>
+          <p>{clientName} </p>
+          <p className="invoice-detail__text">{clientAddress.street}</p>
+          <p className="invoice-detail__text">{clientAddress.city}</p>
+          <p className="invoice-detail__text">{clientAddress.postal}</p>
+          <p className="invoice-detail__text">{clientAddress.country}</p>
+        </div>
+
+        <div className="invoice-detail__body-email">
+          <p className="invoice-detail__text invoice-detail__title ">sent to</p>
+          <p>{clientEmail}</p>
+        </div>
+      </div>
+
+      <div className="invoice-detail__total">
+        <div className="invoice-detail__total-header">
+          <div className="invoice-detail__total-name">
+            <p className="invoice-detail__text">Item Name</p>
+          </div>
+          <div className="invoice-detail__total-info">
+            <p className="invoice-detail__text">QTY.</p>
+            <p className="invoice-detail__text">Price</p>
+            <p className="invoice-detail__text">Total</p>
+          </div>
+        </div>
+
+        {items.map((item) => (
+          <PriceDetail key={Math.random()} item={item} />
+        ))}
+        {
+          // Work on generating total
+        }
+      </div>
+    </div>
+  );
+};
+
+InvoiceDetail.propTypes = {
+  invoice: PropTypes.object.isRequired,
+};
+
+InvoiceDetail.defaultProps = {
+  invoice: {},
+};
+
+export default InvoiceDetail;
