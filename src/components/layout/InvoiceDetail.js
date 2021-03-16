@@ -76,9 +76,8 @@ const InvoiceDetail = ({ invoice }) => {
           </div>
         </div>
 
-        {items.map((item) => (
-          <PriceDetail key={Math.random()} item={item} />
-        ))}
+        {items &&
+          items.map((item) => <PriceDetail key={Math.random()} item={item} />)}
         {
           // Work on generating total
         }

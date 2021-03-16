@@ -1,41 +1,90 @@
 import { useState, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { InvoiceCreateContext } from "../context/InvoiceCreateContext";
+import { InvoiceContext } from "../context/InvoiceContext";
 import CustomButtom from "./layout/CustomButton";
 
 const NewInvoice = () => {
+  const { darkTheme } = useContext(ThemeContext);
+
+  const { creatingInvoice, setCreatingInvoice, toggleInvoice } = useContext(
+    InvoiceCreateContext
+  );
+
+  const { addInvoice } = useContext(InvoiceContext);
+
   const [formResponse, setFormResponse] = useState({
-    streetAddress: "",
-    city: "",
-    postCode: "",
-    country: "",
+    id: Math.random().toString(36).substring(7),
+    senderAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
+    },
+    // streetAddress: "",
+    // city: "",
+    // postCode: "",
+    // country: "",
     clientName: "",
     clientEmail: "",
-    clientAddress: "",
-    clientCity: "",
-    clientCode: "",
-    clientCountry: "",
+    clientAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
+    },
+    // clientAddress: "",
+    // clientCity: "",
+    // clientCode: "",
+    // clientCountry: "",
     invoiceDate: "",
-    projectDesc: "",
+    description: "",
+    status: "pending",
+    createdAt: "2021-03-16",
   });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("clicked");
+    addInvoice(formResponse);
+    setCreatingInvoice(false);
   };
 
   const updateStreetAddress = (e) => {
-    setFormResponse({ ...formResponse, streetAddress: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      senderAddress: {
+        ...formResponse.senderAddress,
+        street: e.target.value,
+      },
+    });
   };
 
   const updateCity = (e) =>
-    setFormResponse({ ...formResponse, city: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      senderAddress: {
+        ...formResponse.senderAddress,
+        city: e.target.value,
+      },
+    });
 
   const updatePostal = (e) =>
-    setFormResponse({ ...formResponse, postCode: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      senderAddress: {
+        ...formResponse.senderAddress,
+        postCode: e.target.value,
+      },
+    });
 
   const updateCountry = (e) =>
-    setFormResponse({ ...formResponse, country: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      senderAddress: {
+        ...formResponse.senderAddress,
+        country: e.target.value,
+      },
+    });
 
   const updateClientName = (e) =>
     setFormResponse({ ...formResponse, clientName: e.target.value });
@@ -43,27 +92,47 @@ const NewInvoice = () => {
   const updateClientEmail = (e) =>
     setFormResponse({ ...formResponse, clientEmail: e.target.value });
 
-  const updateClientAddress = (e) =>
-    setFormResponse({ ...formResponse, clientAddress: e.target.value });
+  const updateClientStreet = (e) =>
+    setFormResponse({
+      ...formResponse,
+      clientAddress: {
+        ...formResponse.clientAddress,
+        street: e.target.value,
+      },
+    });
 
   const updateClientCity = (e) =>
-    setFormResponse({ ...formResponse, clientCity: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      clientAddress: {
+        ...formResponse.clientAddress,
+        city: e.target.value,
+      },
+    });
 
   const updateClientCode = (e) =>
-    setFormResponse({ ...formResponse, clientCode: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      clientAddress: {
+        ...formResponse.clientAddress,
+        postCode: e.target.value,
+      },
+    });
 
   const updateClientCountry = (e) =>
-    setFormResponse({ ...formResponse, clientCountry: e.target.value });
+    setFormResponse({
+      ...formResponse,
+      clientAddress: {
+        ...formResponse.clientAddress,
+        country: e.target.value,
+      },
+    });
 
-  const updateInvoiceDate = (e) =>
-    setFormResponse({ ...formResponse, invoiceDate: e.target.value });
+  const updatePaymentDue = (e) =>
+    setFormResponse({ ...formResponse, paymentDue: e.target.value });
 
   const updateProjectDesc = (e) =>
-    setFormResponse({ ...formResponse, projectDesc: e.target.value });
-
-  const { darkTheme } = useContext(ThemeContext);
-
-  const { creatingInvoice, toggleInvoice } = useContext(InvoiceCreateContext);
+    setFormResponse({ ...formResponse, description: e.target.value });
 
   return creatingInvoice ? (
     <section className={`new-invoice ${darkTheme ? "dark-invoice" : ""}`}>
@@ -84,7 +153,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="address"
-                value={formResponse.streetAddress}
+                value={formResponse.senderAddress.street}
                 onChange={updateStreetAddress}
               />
             </label>
@@ -96,7 +165,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="city"
-                value={formResponse.city}
+                value={formResponse.senderAddress.city}
                 onChange={updateCity}
               />
             </label>
@@ -106,7 +175,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="postal"
-                value={formResponse.postCode}
+                value={formResponse.senderAddress.postCode}
                 onChange={updatePostal}
               />
             </label>
@@ -116,7 +185,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="counry"
-                value={formResponse.country}
+                value={formResponse.senderAddress.country}
                 onChange={updateCountry}
               />
             </label>
@@ -154,8 +223,8 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="client-address"
-                value={formResponse.clientAddress}
-                onChange={updateClientAddress}
+                value={formResponse.clientAddress.street}
+                onChange={updateClientStreet}
               />
             </label>
           </div>
@@ -166,7 +235,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="client-city"
-                value={formResponse.clientCity}
+                value={formResponse.clientAddress.city}
                 onChange={updateClientCity}
               />
             </label>
@@ -175,7 +244,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="client-code"
-                value={formResponse.clientCode}
+                value={formResponse.clientAddress.postCode}
                 onChange={updateClientCode}
               />
             </label>
@@ -184,7 +253,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="client-country"
-                value={formResponse.clientCountry}
+                value={formResponse.clientAddress.country}
                 onChange={updateClientCountry}
               />
             </label>
@@ -196,8 +265,8 @@ const NewInvoice = () => {
               <input
                 type="date"
                 name="invoice-date"
-                value={formResponse.invoiceDate}
-                onChange={updateInvoiceDate}
+                value={formResponse.paymentDue}
+                onChange={updatePaymentDue}
               />
             </label>
 
@@ -220,7 +289,7 @@ const NewInvoice = () => {
               <input
                 type="text"
                 name="project-desc"
-                value={formResponse.projectDesc}
+                value={formResponse.description}
                 onChange={updateProjectDesc}
               />
             </label>

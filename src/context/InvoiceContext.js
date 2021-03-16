@@ -6,7 +6,7 @@ export const InvoiceContext = createContext();
 const InvoiceContextProvider = ({ children }) => {
   const [invoices, setInvoices] = useState();
 
-  function fetchData() {
+  function getInvoices() {
     // fetch("http://localhost:1337/invoices/", {
     //   method: "GET",
     //   headers: {
@@ -19,11 +19,16 @@ const InvoiceContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    fetchData();
+    getInvoices();
   }, []);
 
+  const addInvoice = (invoiceData) => {
+    setInvoices([...invoices, invoiceData]);
+    console.log(`invoices: ${invoices}, data ${invoiceData}`);
+  };
+
   return (
-    <InvoiceContext.Provider value={{ invoices }}>
+    <InvoiceContext.Provider value={{ invoices, addInvoice }}>
       {children}
     </InvoiceContext.Provider>
   );

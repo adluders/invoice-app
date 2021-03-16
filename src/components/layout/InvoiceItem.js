@@ -12,7 +12,7 @@ const InvoiceItem = ({ invoice }) => {
       className={`invoice ${darkTheme ? "dark-invoice" : ""}`}
     >
       <div>
-        <p>{id}</p>
+        <p>{id.toUpperCase()}</p>
       </div>
       <div>
         <p>Due {new Date(paymentDue).toLocaleDateString()}</p>
@@ -21,7 +21,7 @@ const InvoiceItem = ({ invoice }) => {
         <p>{clientName}</p>
       </div>
       <div>
-        <p>&pound; {total.toFixed(2)}</p>
+        <p>&pound; {total && total.toFixed(2)}</p>
       </div>
       <div
         className={`invoice__status ${status === "paid" ? "paid" : ""} ${

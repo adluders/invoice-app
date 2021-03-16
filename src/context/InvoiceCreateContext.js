@@ -8,7 +8,9 @@ const InvoiceCreateContextProvider = ({ children }) => {
   const toggleInvoice = () => setCreatingInvoice(!creatingInvoice);
 
   return (
-    <InvoiceCreateContext.Provider value={{ creatingInvoice, toggleInvoice }}>
+    <InvoiceCreateContext.Provider
+      value={{ creatingInvoice, setCreatingInvoice, toggleInvoice }}
+    >
       {children}
     </InvoiceCreateContext.Provider>
   );
