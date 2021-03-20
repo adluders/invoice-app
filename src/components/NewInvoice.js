@@ -13,8 +13,20 @@ const NewInvoice = () => {
 
   const { addInvoice } = useContext(InvoiceContext);
 
+  const numGenerator = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  let letter1 = numGenerator(10, 35).toString(36).toUpperCase();
+
+  let letter2 = numGenerator(10, 35).toString(36).toUpperCase();
+
+  const num = numGenerator(1000, 9999);
+
   const [formResponse, setFormResponse] = useState({
-    id: Math.random().toString(36).substring(7),
+    invoiceId: `${letter1}${letter2}${num}`,
     senderAddress: {
       street: "",
       city: "",

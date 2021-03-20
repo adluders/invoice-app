@@ -1,11 +1,15 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
+import { InvoiceDeleteContext } from "../../context/InvoiceDeleteContext";
+import { InvoiceContext } from "../../context/InvoiceContext";
 import { ThemeContext } from "../../context/ThemeContext";
 
 import CustomButton from "./CustomButton";
 
 const StatusBar = ({ invoice }) => {
   const { darkTheme } = useContext(ThemeContext);
+  const { initDelete } = useContext(InvoiceDeleteContext);
+  const { markPaid } = useContext(InvoiceContext);
   const { status } = invoice;
 
   return (
@@ -25,10 +29,17 @@ const StatusBar = ({ invoice }) => {
           buttonText="edit"
           customClassName={`${darkTheme ? "btn__light-dm" : "btn__light-lm"}`}
         />
-        <CustomButton buttonText="delete" customClassName="btn__secondary" />
+        <CustomButton
+          buttonText="delete"
+          buttonEvent={initDelete}
+          customClassName="btn__secondary"
+        />
         <CustomButton
           buttonText="mark as paid"
-          customClassName="btn__primary"
+          customClassName={`btn__primary ${
+            status === "paid" && "disabled-btn"
+          }`}
+          buttonEvent={() => markPaid(invoice)}
         />
       </div>
     </div>

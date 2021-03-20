@@ -19,7 +19,7 @@ const Header = () => {
     <header className={`header ${darkTheme ? "dark-header" : ""}`}>
       <div className="header__text">
         <h1>Invoices</h1>
-        {invoices && invoices.length > 1 ? (
+        {invoices && invoices.length >= 1 ? (
           <p> There are {invoices.length} total invoices </p>
         ) : (
           <p> No more invoices! </p>

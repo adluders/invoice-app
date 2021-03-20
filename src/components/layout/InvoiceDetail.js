@@ -5,7 +5,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 const InvoiceDetail = ({ invoice }) => {
   const {
-    id,
+    invoiceId,
     createdAt,
     paymentDue,
     description,
@@ -21,14 +21,22 @@ const InvoiceDetail = ({ invoice }) => {
     <div className={`invoice-detail ${darkTheme ? "dark-details" : ""} `}>
       <div className="invoice-detail__header">
         <div className="invoice-detail__header-info">
-          <p className="">{id}</p>
+          <p className="">{invoiceId}</p>
           <p className="invoice-detail__text">{description}</p>
         </div>
         <div className="invoice-detail__address">
-          <p className="invoice-detail__text">{senderAddress.street}</p>
-          <p className="invoice-detail__text ">{senderAddress.city}</p>
-          <p className="invoice-detail__text ">{senderAddress.postCode}</p>
-          <p className="invoice-detail__text ">{senderAddress.country}</p>
+          <p className="invoice-detail__text">
+            {senderAddress && senderAddress.street}
+          </p>
+          <p className="invoice-detail__text ">
+            {senderAddress && senderAddress.city}
+          </p>
+          <p className="invoice-detail__text ">
+            {senderAddress && senderAddress.postCode}
+          </p>
+          <p className="invoice-detail__text ">
+            {senderAddress && senderAddress.country}
+          </p>
         </div>
       </div>
 
@@ -52,10 +60,18 @@ const InvoiceDetail = ({ invoice }) => {
         <div className="invoice-detail__body-client">
           <p className="invoice-detail__text invoice-detail__title ">bill to</p>
           <p>{clientName} </p>
-          <p className="invoice-detail__text">{clientAddress.street}</p>
-          <p className="invoice-detail__text">{clientAddress.city}</p>
-          <p className="invoice-detail__text">{clientAddress.postal}</p>
-          <p className="invoice-detail__text">{clientAddress.country}</p>
+          <p className="invoice-detail__text">
+            {clientAddress && clientAddress.street}
+          </p>
+          <p className="invoice-detail__text">
+            {clientAddress && clientAddress.city}
+          </p>
+          <p className="invoice-detail__text">
+            {clientAddress && clientAddress.postal}
+          </p>
+          <p className="invoice-detail__text">
+            {clientAddress && clientAddress.country}
+          </p>
         </div>
 
         <div className="invoice-detail__body-email">

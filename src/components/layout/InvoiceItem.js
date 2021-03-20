@@ -4,15 +4,15 @@ import RightArrow from "../../assets/icon-arrow-right.svg";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const InvoiceItem = ({ invoice }) => {
-  const { id, paymentDue, clientName, total, status } = invoice;
+  const { invoiceId, paymentDue, clientName, total, status } = invoice;
   const { darkTheme } = useContext(ThemeContext);
   return (
     <Link
-      to={`/invoice/${id}`}
+      to={`/invoice/${invoiceId}`}
       className={`invoice ${darkTheme ? "dark-invoice" : ""}`}
     >
       <div>
-        <p>{id.toUpperCase()}</p>
+        <p>{invoiceId.toUpperCase()}</p>
       </div>
       <div>
         <p>Due {new Date(paymentDue).toLocaleDateString()}</p>

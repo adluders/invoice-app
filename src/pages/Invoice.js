@@ -1,19 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import LeftArrow from "../assets/icon-arrow-left.svg";
+import ConfirmDelete from "../components/layout/ConfirmDelete";
 import InvoiceDetail from "../components/layout/InvoiceDetail";
 import StatusBar from "../components/layout/StatusBar";
 import { InvoiceContext } from "../context/InvoiceContext";
 import { ThemeContext } from "../context/ThemeContext";
 
 const Invoice = () => {
-  let { id } = useParams();
+  let { invoiceId } = useParams();
   const { invoices } = useContext(InvoiceContext);
   const { darkTheme } = useContext(ThemeContext);
 
-  let invoice = invoices && invoices.filter((inv) => inv.id === id);
+  let invoice =
+    invoices && invoices.filter((inv) => inv.invoiceId === invoiceId);
 
-  let invoiceItem = invoice && invoice[0];
+  const [invoiceItem, setInvoiceItem] = useState({});
+  // let invoiceItem = invoice && invoice[0];
+
+  useEffect(() => {
+    invoice && setInvoiceItem(invoice[0]);
+  }, [invoice]);
 
   return (
     <section
@@ -28,6 +35,8 @@ const Invoice = () => {
         </Link>
       </div>
       <StatusBar invoice={invoiceItem} />
+
+      <ConfirmDelete invoice={invoiceItem} />
 
       <div className="invoice-page__details">
         <InvoiceDetail invoice={invoiceItem} />

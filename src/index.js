@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import InvoiceContextProvider from "./context/InvoiceContext";
 import InvoiceCreateContextProvider from "./context/InvoiceCreateContext";
+import InvoiceDeleteContextProvider from "./context/InvoiceDeleteContext";
 import ThemeContextProvider from "./context/ThemeContext";
 import "./index.css";
 
@@ -14,7 +15,9 @@ ReactDOM.render(
       <ThemeContextProvider>
         <InvoiceContextProvider>
           <InvoiceCreateContextProvider>
-            <App />
+            <InvoiceDeleteContextProvider>
+              <App />
+            </InvoiceDeleteContextProvider>
           </InvoiceCreateContextProvider>
         </InvoiceContextProvider>
       </ThemeContextProvider>

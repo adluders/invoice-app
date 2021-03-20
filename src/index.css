@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Spartan", sans-serif;
 }
@@ -45,10 +49,12 @@ a {
 
 .light-mode {
   background-color: var(--light-bg);
+  min-height: 100vh;
 }
 
 .dark-mode {
   background-color: var(--dark-bg);
+  min-height: 100vh;
 }
 
 .container {
@@ -89,6 +95,11 @@ a {
 .btn__primary {
   background-color: var(--primary-purple);
   color: #fff;
+}
+
+.btn__primary.disabled-btn {
+  background-color: var(--secondary-purple);
+  pointer-events: none;
 }
 
 .btn__primary:hover {
@@ -493,9 +504,9 @@ main {
   grid-template-columns: repeat(2, 1fr);
   margin: 1.5rem 0;
 }
-
+/* 
 .price-detail.dark-detail {
-}
+} */
 
 .price-detail__info {
   display: flex;
@@ -610,4 +621,39 @@ main {
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
+}
+
+/* Deleting */
+.delete-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-modal {
+  background-color: #fff;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.delete-modal__info {
+  margin: 1rem 0;
+}
+
+.delete-modal__ctas {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
 }

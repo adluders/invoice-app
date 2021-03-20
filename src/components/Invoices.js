@@ -9,7 +9,7 @@ const Invoices = () => {
     <div>
       {invoices &&
         invoices.map((invoice) => (
-          <InvoiceItem key={invoice.id} invoice={invoice} />
+          <InvoiceItem key={invoice.invoiceId} invoice={invoice} />
         ))}
     </div>
   );
