@@ -2,6 +2,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import PriceDetail from "./PriceDetail";
 import { ThemeContext } from "../../context/ThemeContext";
+import PriceTotal from "./PriceTotal";
 
 const InvoiceDetail = ({ invoice }) => {
   const {
@@ -81,21 +82,26 @@ const InvoiceDetail = ({ invoice }) => {
       </div>
 
       <div className="invoice-detail__total">
-        <div className="invoice-detail__total-header">
-          <div className="invoice-detail__total-name">
-            <p className="invoice-detail__text">Item Name</p>
+        <div className="invoice-container">
+          <div className="invoice-detail__total-header">
+            <div className="invoice-detail__total-name">
+              <p className="invoice-detail__text">Item Name</p>
+            </div>
+            <div className="invoice-detail__total-info">
+              <p className="invoice-detail__text">QTY.</p>
+              <p className="invoice-detail__text">Price</p>
+              <p className="invoice-detail__text">Total</p>
+            </div>
           </div>
-          <div className="invoice-detail__total-info">
-            <p className="invoice-detail__text">QTY.</p>
-            <p className="invoice-detail__text">Price</p>
-            <p className="invoice-detail__text">Total</p>
-          </div>
-        </div>
 
-        {items &&
-          items.map((item) => <PriceDetail key={Math.random()} item={item} />)}
+          {items &&
+            items.map((item) => (
+              <PriceDetail key={Math.random()} item={item} />
+            ))}
+        </div>
         {
           // Work on generating total
+          <PriceTotal items={items} />
         }
       </div>
     </div>

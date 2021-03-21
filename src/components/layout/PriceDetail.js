@@ -12,8 +12,8 @@ const PriceDetail = ({ item }) => {
       </div>
       <div className="price-detail__info">
         <p>{quantity}</p>
-        <p>$ {price.toFixed(2)} </p>
-        <p>$ {(price * quantity).toFixed(2)} </p>
+        <p>&pound; {price.toFixed(2)} </p>
+        <p>&pound; {(price * quantity).toFixed(2)} </p>
       </div>
     </div>
   );

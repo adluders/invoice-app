@@ -477,6 +477,10 @@ main {
   margin-top: 3rem;
   background-color: #f9fafe;
   border-radius: 0.5rem;
+  /* padding: 2rem; */
+}
+
+.invoice-container {
   padding: 2rem;
 }
 
@@ -516,6 +520,23 @@ main {
 .price-detail__info p {
   width: 100%;
   text-align: center;
+}
+
+.price-total {
+  background-color: #373b53;
+  color: #fff;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.price-total.dark-total {
+  background-color: var(--dark-color);
+}
+
+.price-total .invoice-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* New Invoice */
