@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import PriceDetail from "./PriceDetail";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import PriceTotal from "./PriceTotal";
 
 const InvoiceDetail = ({ invoice }) => {

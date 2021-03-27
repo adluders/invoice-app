@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import RightArrow from "../../assets/icon-arrow-right.svg";
-import { ThemeContext } from "../../context/ThemeContext";
+import RightArrow from "../assets/icon-arrow-right.svg";
+import { ThemeContext } from "../context/ThemeContext";
 
 const InvoiceItem = ({ invoice }) => {
   const { invoiceId, paymentDue, clientName, total, status } = invoice;

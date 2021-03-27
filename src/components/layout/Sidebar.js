@@ -1,4 +1,4 @@
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
 

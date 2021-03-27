@@ -4,7 +4,7 @@ import { InvoiceDeleteContext } from "../../context/InvoiceDeleteContext";
 import { InvoiceContext } from "../../context/InvoiceContext";
 import { ThemeContext } from "../../context/ThemeContext";
 
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 
 const StatusBar = ({ invoice }) => {
   const { darkTheme } = useContext(ThemeContext);

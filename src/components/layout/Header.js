@@ -1,4 +1,4 @@
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 import PlusSign from "../../assets/icon-plus.svg";
 import Arrow from "../../assets/icon-arrow-down.svg";
 import { InvoiceContext } from "../../context/InvoiceContext";

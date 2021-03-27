@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { InvoiceCreateContext } from "../context/InvoiceCreateContext";
 import { InvoiceContext } from "../context/InvoiceContext";
-import CustomButtom from "./layout/CustomButton";
+import CustomButtom from "./CustomButton";
+import ItemCreate from "./ItemCreate";
 
 const NewInvoice = () => {
   const { darkTheme } = useContext(ThemeContext);
@@ -305,6 +306,10 @@ const NewInvoice = () => {
                 onChange={updateProjectDesc}
               />
             </label>
+          </div>
+
+          <div className="new-invoice__form-group">
+            <ItemCreate />
           </div>
 
           <div className="new-invoice__form-ctas">

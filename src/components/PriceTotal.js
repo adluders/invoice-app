@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 const PriceTotal = ({ items }) => {
   const prices = items && items.map((item) => item.price);

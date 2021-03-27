@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { InvoiceContext } from "../context/InvoiceContext";
-import InvoiceItem from "./layout/InvoiceItem";
+import InvoiceItem from "./InvoiceItem";
 
 const Invoices = () => {
   const { invoices } = useContext(InvoiceContext);

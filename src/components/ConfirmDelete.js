@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { InvoiceContext } from "../../context/InvoiceContext";
-import { InvoiceDeleteContext } from "../../context/InvoiceDeleteContext";
+import { InvoiceContext } from "../context/InvoiceContext";
+import { InvoiceDeleteContext } from "../context/InvoiceDeleteContext";
 import CustomButton from "./CustomButton";
 
 const ConfirmDelete = ({ invoice }) => {

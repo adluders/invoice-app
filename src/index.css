@@ -637,6 +637,46 @@ main {
   color: #fff;
 }
 
+.item-list {
+  border: solid red;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.item-list h2 {
+  color: #777f98;
+  font-size: 1.2rem;
+  align-self: flex-start;
+  margin-bottom: 2rem;
+}
+
+.item-list__header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  /* border: solid black; */
+}
+
+.item-list__header h3 {
+  /* border: solid red; */
+  font-size: 0.9rem;
+  width: 100%;
+  color: var(--soft-blue);
+  font-weight: 100;
+  align-self: center;
+}
+
+.item-list button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .new-invoice__form-ctas {
   display: flex;
   align-items: center;

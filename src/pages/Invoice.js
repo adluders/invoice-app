@@ -1,8 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import LeftArrow from "../assets/icon-arrow-left.svg";
-import ConfirmDelete from "../components/layout/ConfirmDelete";
-import InvoiceDetail from "../components/layout/InvoiceDetail";
+import ConfirmDelete from "../components/ConfirmDelete";
+import InvoiceDetail from "../components/InvoiceDetail";
 import StatusBar from "../components/layout/StatusBar";
 import { InvoiceContext } from "../context/InvoiceContext";
 import { ThemeContext } from "../context/ThemeContext";
